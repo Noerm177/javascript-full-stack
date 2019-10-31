@@ -1,14 +1,19 @@
+if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const morgan = require('morgan');
 const multer = require('multer');
 const path = require('path');
+require('dotenv').config();
 
 //Init
 const app = express();
-require('./database')
+require('./database');
 
 //Setting
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 
 //Middlewares
 app.use(morgan('dev'));
