@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./frontend/models/styles/styles.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,C","file":"css/bunle.css","sourcesContent":["body {\r\n    background: green;\r\n    color: whitesmoke;\r\n}"],"sourceRoot":""}

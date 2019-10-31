@@ -32,7 +32,7 @@ app.use(express.json());
 app.use('/api/books', require('./routes/books'));
 
 //static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));// se accede de cualquier lado
 
 //Start the server
 app.listen(app.get('port'), () =>{
