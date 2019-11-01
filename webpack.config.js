@@ -11,7 +11,8 @@ module.exports = {
         path: path.join(__dirname, 'backend/public'),//aqui guarda
         filename: 'js/bundle.js'
     },
-
+    mode: 'development',
+    
     module: {
         rules: [
             {
