@@ -1,7 +1,9 @@
 const {Router} = require('express');
 const router = Router();
-
+const fs = require('fs');
+const {unlink} = require('fs-extra');
 const Book = require('../models/book');
+const path = require('path');
 
 //muestra peticion con get para esa ruta
 router.get('/', async (req, res) => {
@@ -20,7 +22,8 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:id', async(req, res) => {
-    await Book.findByIdAndDelete(req.params.id);
+    const book = await Book.findByIdAndDelete(req.params.id);
+    unlink(path.resolve('/backend/public' + book.imagePath));
     res.json({message: 'Book deleting'});
 });
 

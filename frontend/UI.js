@@ -1,6 +1,7 @@
 import BookService from './models/services/BookService';
 const bookService = new BookService();
 import {format} from 'timeago.js';
+import { set } from 'mongoose';
 
 class UI {
 
@@ -44,8 +45,23 @@ class UI {
         document.getElementById('book-form').reset();
     }
 
-    renderMessage(){}
+    renderMessage(message, colorMessage, secondsToRemove){
+        const div = document.createElement('div');
+        div.className =  `alert alert-${colorMessage} message`; 
+        div.appendChild(document.createTextNode(message));
 
-    deleteBook(){}
+        const container = document.querySelector('.col-md-4');
+        const bookForm = document.querySelector('#book-form');
+    
+        container.insertBefore(div, bookForm);
+        setTimeout(() => {
+            document.querySelector('.message').remove();
+        }, secondsToRemove);
+
+    }
+
+    async deleteBook(bookID){//bookID
+        await bookService.deleteBook(bookID);
+    }
 }
 export default UI;
